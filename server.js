@@ -12,7 +12,17 @@ const path = require('path');
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            connectSrc: ["'self'", "https://localhost:8080", 'https://itunes.apple.com'],
+            styleSrc: ["'self'", "'unsafe-inline'"], // You might need this for inline styles, adapt accordingly.
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // You might need 'unsafe-eval' for some scripts, adapt accordingly.
+            // Add other directives as needed.
+        }
+    }
+}));
 
 //Heroku deployment
 if (process.env.NODE_ENV === "production") {

@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 8080;
+// const port = 8080;
 const cors = require('cors');
 const fetch = require('node-fetch');
 
@@ -13,6 +13,17 @@ const path = require('path');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(helmet());
+
+//Heroku deployment
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("front-end/build"));
+  
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "front-end", "build", "index.html"));
+    });
+  }
+
+  //API
 
 app.get('/api/search/:term/:country/:media', async (req, res) => {
     const term = req.params.term;
@@ -80,15 +91,12 @@ app.delete('/favourites/:trackId', (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+// app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+// });
+
+const PORT = process.env.PORT || 3001
+app.listen(PORT, ()=> {
+    console.log(`Server is running on port ${PORT}`)
 });
 
-//Heroku deployment
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("front-end/build"));
-  
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "front-end", "build", "index.html"));
-    });
-  }

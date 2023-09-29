@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-end && npm run build --prefix front-end"
+    "start": "concurrently \"npm run server\" \"npm run front-end\"",
+    "server": "node server.js",
+    "front-end": "cd front-end && npm start"
   },
   "keywords": [],
   "author": "",

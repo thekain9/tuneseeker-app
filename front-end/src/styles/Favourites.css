@@ -9,6 +9,10 @@ h2 {
   h4 {
     color: #0D0D0D;
   }
+
+  .favourites-div {
+    display: flex;
+  }
   
   .search-results-container {
     background-color: #0D0D0D;

@@ -13,12 +13,13 @@ const Favourites = ({ favourites, setfavourites }) => {
   return (
     <div className="favourites-results-container custom-styles">
       <h2>Favourites</h2>
-      
-      {/* Button to navigate back to home */}
+      <div className='favourites-div'>
+        {/* Button to navigate back to home */}
       <button onClick={() => navigate('/')}>Back Home</button>
 
       {/* Button to navigate back to the previous page (i.e., search results) */}
       <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
       
       <ul className="result-list">
         {favourites.map((favorite) => (

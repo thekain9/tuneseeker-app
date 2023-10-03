@@ -12,7 +12,7 @@ git clone https://github.com/thekain9/tuneseeker
 cd tuneseeker
 
 Install Dependencies:
-cd [directoryName]
+cd front-end
 npm install
 
 Navigate to the front-end directory and install dependencies. 
@@ -33,3 +33,6 @@ Add items to your list of favorites and manage this list.
 Security:
 
 The Express server is secured with Helmet, ensuring a safer web application by setting various HTTP headers.
+
+Deployed in:
+https://tuneseekertest.onrender.com/

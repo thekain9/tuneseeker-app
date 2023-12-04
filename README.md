@@ -23,3 +23,7 @@ Add items to your list of favorites and manage this list.
 
 The Express server is secured with Helmet, ensuring a safer web application by setting various HTTP headers.
 
+If you appericate this amazing project, kindly leave a ⭐ by clicking on the star button on the top right.
+Thank you!
+
+

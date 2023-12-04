@@ -13,13 +13,13 @@ Follow these steps to run the app on your local machine:
 
 **The Express server will start on port 8080 and the React app on port 3000.
 
-### How to use the app
+## How to use the app
 
 Search for content from the iTunes store based on type (e.g., movie, music, podcast).
 View search results and navigate to the iTunes store for more details.
 Add items to your list of favorites and manage this list.
 
-#### Security
+## Security
 
 The Express server is secured with Helmet, ensuring a safer web application by setting various HTTP headers.
 

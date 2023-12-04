@@ -1,38 +1,25 @@
+# Tuneseeker
+
 This application allows you to search for content from the iTunes store and maintain a list of your favorite items.
 
-Prerequisites:
+## Getting started
 
-Node.js / npm
+Follow these steps to run the app on your local machine:
+1. Install Node.js / npm
+2. Clone the Repository "git clone https://github.com/thekain9/tuneseeker"
+3. Navigate to the newly created folder "cd tuneseeker"
+4. Install dependencies navigating to the front-end directory "cd front-end npm install"
+5. Start the app navigating to the root directory and starting the app concurrently using the command "npm start".
 
-Getting Started:
+**The Express server will start on port 8080 and the React app on port 3000.
 
-Clone the Repository:
-
-git clone https://github.com/thekain9/tuneseeker
-cd tuneseeker
-
-Install Dependencies:
-cd front-end
-npm install
-
-Navigate to the front-end directory and install dependencies. 
-cd front-end
-npm install
-
-Start the App:
-From the root directory, you can start both the server and the frontend concurrently with a single command:
-
-npm start
-This will start the Express server on port 8080 and the React app on port 3000.
-Features:
+### How to use the app
 
 Search for content from the iTunes store based on type (e.g., movie, music, podcast).
 View search results and navigate to the iTunes store for more details.
 Add items to your list of favorites and manage this list.
 
-Security:
+#### Security
 
 The Express server is secured with Helmet, ensuring a safer web application by setting various HTTP headers.
 
-Deployed in:
-https://tuneseekertest.onrender.com/

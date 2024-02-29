@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';   // Import useNavigate hook
 import '../styles/Favourites.css';  
+import MenuSide from './MenuSide';
 
 const Favourites = ({ favourites, setfavourites }) => {
   const navigate = useNavigate();  // Call the hook
@@ -11,35 +12,45 @@ const Favourites = ({ favourites, setfavourites }) => {
   };
 
   return (
-    <div className="favourites-results-container custom-styles">
-      <h2>Favourites</h2>
-      <div className='favourites-div'>
-        {/* Button to navigate back to home */}
-      <button onClick={() => navigate('/')}>Back Home</button>
-
-      {/* Button to navigate back to the previous page (i.e., search results) */}
-      <button onClick={() => navigate(-1)}>Go Back</button>
+    <div className="search-results-container">
+    <div className='container-menu'>
+      <div className='menu-side'>
+        <MenuSide url={-1} buttonName='Go Back' />
       </div>
-      
-      <ul className="result-list">
-        {favourites.map((favorite) => (
-          <li key={favorite.trackId} className="custom-list-item">
-            <h3>Artist name:</h3>
-            <p>{favorite.artistName}</p>
-            <h3>Title:</h3>
-            <p>{favorite.trackName ? favorite.trackName : 'Not listed :('}</p>
-            <h3>Visit the artist:</h3>
-            {favorite.artistViewUrl ? (
-              <a href={favorite.artistViewUrl} target="_blank" rel="noopener noreferrer">
-                {favorite.artistViewUrl}
-              </a>
-            ) : (
-              <p>Not listed :(</p>
-            )}
-            <button onClick={() => removeFavorite(favorite.trackId)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+    </div>
+    <div className='side-menu'>
+    </div>
+    
+        
+        <ul className="result-list">
+          {favourites.map((favorite) => (
+            favorite.trackId && (
+              <div className='custom-list-container'>
+          
+              <li key={favorite.trackId} className="custom-list-item custom-favourites">
+                <div className='content-list-item'>
+                  <h3>Artist name:</h3>
+                  <p>{favorite.artistName}</p>
+                  <h3>Title:</h3>
+                  <p>{favorite.trackName ? favorite.trackName : 'Not listed...sorry!'}</p>
+                </div>
+                <div className='button-list-item'>
+                  {favorite.artistViewUrl ? (
+                  <button onClick={() => window.open(favorite.artistViewUrl, '_blank')} 
+                  rel='noopener noreferrer'
+                  className='small-button'>
+                  {favorite.artistViewUrl ? 'View Artist' : 'Not listed'}
+                  </button>) : ('Not listed')
+                  }
+                  <button onClick={() => removeFavorite(favorite.trackId)}
+                  className='small-button'>Remove</button>
+                </div>
+              </li>
+              </div>
+            )
+          ))}
+        </ul>
+  
     </div>
   );
 };

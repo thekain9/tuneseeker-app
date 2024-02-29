@@ -1,73 +1,161 @@
 body {
 
-  background-color: #7897BF;
+  background-image: url('../assets/Main.jpg');
+  background-color: #8C3766;
+ 
+}
+
+.image-2 {
+  position: absolute; /* Position the image relative to the nearest positioned ancestor */
+  z-index: 2; /* Place the image behind other elements */
+  padding-top:18em;
+  width: 13em; 
   
 }
 
-.search-page {
-  
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
-    text-align: center;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .search-bar {
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 8em;
+  margin: auto 0 0; 
+  padding: 0.2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 0;
+  margin-top: .5em;
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.5); /* White background with 50% opacity */
+  backdrop-filter: blur(10px);
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    text-align: center;
-    margin-bottom: 0px;
-  }
-  
-  .search-input {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.search-bar-container {
+  padding: 2em;
+  border-radius: 5em;
+  background-color: rgba(255, 255, 255, 0.5); /* White background with 50% opacity */
+  backdrop-filter: blur(10px);
+}
+input {
+  padding-right: 5em;
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+  position: relative;
+  width: 20em; 
+  padding-left: 5%;
+}
+
+.custom-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../assets/loop.svg');  
+  background-position: 2%;
+  background-repeat: no-repeat;
+  background-size: .8em;
+  padding-right: 2%;
+  cursor:pointer;
+
+}
+
+
+.search-page .search-bar input::placeholder {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  color: #686868;
+  /* padding: 1.5em; */
+  padding-right: 5em;
+  text-align: center;
+}
+
+.custom-input:focus {
+  padding-left: 5%;
+ }
+
+.custom-select {
+  padding-left: 1.2em;
+  padding-right: 2em;
+  border: none;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+  appearance: none; 
+}
+
+
+/* Apply custom styles for the dropdown arrow */
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../assets/arrow.svg');  
+  background-position: 90%;
+  background-repeat: no-repeat;
+  background-size: .8em;
+  cursor: pointer;
+}
+
+.search-button{
+  padding: .2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+}
+
+.search-button-container {
+  margin-top: 2em;
+  padding: .8em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-radius: 5em;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+
+
+  @media (max-width: 768px) {
+
+    .search-word {
+      font-size: 4.5em;
+    }
+
+
+    .search-input {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    input, select, option, button {
+      font-family: 'Oswald', sans-serif;
+      font-family: 400;
+      font-size: 5em;
+      color: #F2F0E9;
+      background: #D96E48;
+      border: 0;
+      border-radius: 5px;
+     
+    }
+
+    .title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 4.5em;
+      margin: auto 0 0; 
+      padding: 0;
+      margin-bottom: .2em;
+    }
 
   }
-  h1 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 5em;
-  }
-
-  input, select, option, button {
-    font-family: 'Oswald', sans-serif;
-    font-family: 400;
-    font-size: 1.2em;
-    color: #F2F0E9;
-    background: #D96E48;
-    border: 0;
-    border-radius: 5px;
-    margin: .8em;
-  }
-
-  .search-page .search-bar input::placeholder {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-    color: #F2EFBB; 
-  }
-  
-  .title {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 20.5em;
-    margin: auto 0 0; 
-    padding: 0;
-    margin-bottom: 0;
-  }
-
   

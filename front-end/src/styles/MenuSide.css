@@ -1,0 +1,86 @@
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 10em;
+    padding-bottom:3em;
+}
+
+.search-results-side-menu {
+    font-family: 'Oswald', sans-serif;
+    font-family: 700;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    border-radius: 10em;
+    padding: .2em;
+    padding-bottom:1em;
+
+}
+
+.custom-input-menu-side {
+    width: 9em;
+}
+
+.custom-input-menu-side {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: 2%;
+    background-repeat: no-repeat;
+    background-size: .8em;
+    padding-right: 2%;
+    cursor:pointer;
+  
+}
+
+.custom-select-menu-side {
+    padding-left: 2em;
+    padding-right: 2em;
+    border: none;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+    appearance: none; 
+  }
+  
+  
+  /* Apply custom styles for the dropdown arrow */
+  .custom-select-menu-side {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../assets/arrow.svg');  
+    background-position: 90%;
+    background-repeat: no-repeat;
+    background-size: .8em;
+    cursor: pointer;
+  }
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-button-side-menu {
+    background-color: white;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.search-button-side-menu-2 {
+    font-size: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #F2EA79;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .8);
+}
+  

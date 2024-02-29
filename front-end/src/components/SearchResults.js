@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';      // I am importing the React library, along with the useState and useEffect hooks.
-import { useParams, useNavigate } from 'react-router-dom'; // I am importing hooks from the 'react-router-dom' library for routing purposes.
+import { useParams } from 'react-router-dom'; // I am importing hooks from the 'react-router-dom' library for routing purposes.
+import MenuSide from './MenuSide';
 import 'bootstrap/dist/css/bootstrap.min.css';          // I am importing the Bootstrap CSS framework for styling.
 import '../styles/searchResults.css';                    // I am importing local CSS styles specific to this component.
+
 
 const SearchResults = () => {
   const { term, media } = useParams();                   // I am extracting 'term' and 'media' parameters from the route using the 'useParams' hook.
@@ -9,12 +11,14 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(true);          // I am setting up a state variable 'loading' to track the loading status. Initially set to 'true'.
   const [favourites, setFavourites] = useState([]);      // I am setting up a state variable 'favourites' to hold favourite items. Initially, it's an empty array.
 
-  const navigate = useNavigate();                        // I am setting up a function called 'navigate' using the 'useNavigate' hook for programmatically navigating.
+
+
+
 
   useEffect(() => {
 // Fetch search results
     setLoading(true);                                    // I am setting the 'loading' state to true indicating the fetch process has started.
-    fetch(`http://localhost:8080/api/search/${term}/gb/${media}`)
+    fetch(`https://us-central1-mytuneseeker.cloudfunctions.net/api/api/search/${term}/gb/${media}`)
       .then((response) => response.json())               // I am converting the received response to a JSON object.
       .then((data) => {
         console.log('API Response:', data);              // I am logging the API response data.
@@ -28,7 +32,7 @@ const SearchResults = () => {
 
 
 // Fetch favourites
-    fetch('http://localhost:8080/favourites')
+    fetch('https://us-central1-mytuneseeker.cloudfunctions.net/api/favourites')
       .then((response) => response.json())               // I am converting the received response to a JSON object.
       .then((data) => {
         setFavourites(data);                             // I am updating the 'favourites' state with the fetched data.
@@ -44,7 +48,7 @@ const SearchResults = () => {
   const toggleFavourites = (item) => {
     if (isInFavourites(item)) {
       // Remove item from favourites
-      fetch(`http://localhost:8080/favourites/${item.trackId}`, {
+      fetch(`https://us-central1-mytuneseeker.cloudfunctions.net/api/favourites/${item.trackId}`, {
         method: 'DELETE'
       })
       .then(() => {
@@ -56,7 +60,7 @@ const SearchResults = () => {
       });
     } else {
       // Add item to favourites
-      fetch('http://localhost:8080/favourites', {
+      fetch('https://us-central1-mytuneseeker.cloudfunctions.net/api/favourites', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -74,32 +78,45 @@ const SearchResults = () => {
 
 
   return (
-    <div className="search-results-container custom-styles">
-      <h2>Search Results...</h2>
-      <button onClick={() => navigate('/favourites')}>View favourites</button>
+    <div className="search-results-container">
+    <div className='container-menu'>
+      <div className='menu-side'>
+        <MenuSide url={'/favourites'} buttonName='Favourites' />
+      </div>
+    </div>
+    <div className='side-menu'>
+    </div>
       {loading ? (
         <h4>Loading...</h4>
       ) : (
+        
         <ul className="result-list">
           {results.map((result) => (
             result.trackId && (
+              <div className='custom-list-container'>
+          
               <li key={result.trackId} className="custom-list-item">
-                <h3>Artist name:</h3>
-                <p>{result.artistName}</p>
-                <h3>Title:</h3>
-                <p>{result.trackName ? result.trackName : 'Not listed :('}</p>
-                <h3>Visit the artist:</h3>
-                {result.artistViewUrl ? (
-                  <a href={result.artistViewUrl} target="_blank" rel="noopener noreferrer">
-                    {result.artistViewUrl}
-                  </a>
-                ) : (
-                  <p>Not listed :(</p>
-                )}
-                <button onClick={() => toggleFavourites(result)}>
-                  {isInFavourites(result) ? 'Remove from favourites' : 'Add to favourites'}
-                </button>
+                <div className='content-list-item'>
+                  <h3>Artist name:</h3>
+                  <p>{result.artistName}</p>
+                  <h3>Title:</h3>
+                  <p>{result.trackName ? result.trackName : 'Not listed...sorry!'}</p>
+                </div>
+                <div className='button-list-item'>
+                  {result.artistViewUrl ? (
+                  <button onClick={() => window.open(result.artistViewUrl, '_blank')} 
+                  rel='noopener noreferrer'
+                  className='small-button'>
+                  {result.artistViewUrl ? 'View Artist' : 'Not listed'}
+                  </button>) : ('Not listed')
+                  }
+                  <button onClick={() => toggleFavourites(result)}
+                  className='small-button'>
+                    {isInFavourites(result) ? 'Remove from favourites' : 'Add to favourites'}
+                  </button>
+                </div>
               </li>
+              </div>
             )
           ))}
         </ul>

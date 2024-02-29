@@ -10,7 +10,7 @@ function App() {
 
   // Fetch favourites from server when the app component mounts
   useEffect(() => {
-      fetch('http://localhost:8080/favourites')
+      fetch('https://us-central1-mytuneseeker.cloudfunctions.net/api/favourites')
       .then(response => response.json())
       .then(data => {
           setfavourites(data);
